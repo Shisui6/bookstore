@@ -1,40 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
+import { selectBooks } from '../../redux/books/books';
 import Book from '../Book/Book';
 import BookForm from '../BookForm/BookForm';
 import './BookList.css';
+import bookImg from '../../images/book-empty.png';
 
 const BookList = () => {
-  const booksArr = [
-    {
-      id: 1,
-      percent: 64,
-      category: 'Action',
-      title: 'The Hunger Games',
-      author: 'Suzanne Collins',
-      chapter: 'Chapter 17',
-    },
-    {
-      id: 2,
-      percent: 30,
-      category: 'Science Fiction',
-      title: 'Dune',
-      author: 'Frank Herbert',
-      chapter: 'Chapter 3: "A Lesson Learned"',
-    },
-    {
-      id: 3,
-      percent: 5,
-      category: 'Economy',
-      title: 'Capital in the Twenty-First Century',
-      author: 'Suzanne Collins',
-      chapter: 'Introduction',
-    },
-  ];
-  const [books] = useState(booksArr);
+  const books = useSelector(selectBooks);
+  const [animationParent] = useAutoAnimate();
+
+  if (!books.length) {
+    return (
+      <>
+        <div className="booklist" ref={animationParent}>
+          <div className="booklist-empty">
+            <img src={bookImg} alt="book" />
+            <h2>Library is empty. Add a book to see it here</h2>
+          </div>
+
+          <BookForm />
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
-      <div className="booklist">
+      <div className="booklist" ref={animationParent}>
         {books.map((book) => <Book key={book.id} book={book} />)}
 
         <BookForm />

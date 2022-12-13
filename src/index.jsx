@@ -5,6 +5,8 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import './index.css';
+import { Provider } from 'react-redux';
+import store from './redux/configureStore';
 import App from './routes/App';
 import reportWebVitals from './reportWebVitals';
 import ErrorPage from './routes/error-page';
@@ -32,7 +34,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>,
 );
 

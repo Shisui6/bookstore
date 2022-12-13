@@ -14,3 +14,5 @@ export default (state = initialState, action) => {
 export const statusAction = () => ({
   type: STATUS,
 });
+
+export const selectCategories = (state) => state.categories;
