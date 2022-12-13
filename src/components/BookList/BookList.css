@@ -2,6 +2,16 @@
   padding: 10px 40px 50px;
 }
 
+.booklist-empty {
+  text-align: center;
+  color: #daaa63;
+  padding: 10px;
+}
+
+.booklist-empty h2 {
+  font-weight: 400;
+}
+
 @media only screen and (max-width: 768px) {
   .booklist {
     padding: 10px 20px 50px;
