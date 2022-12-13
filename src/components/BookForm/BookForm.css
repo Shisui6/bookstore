@@ -1,0 +1,42 @@
+.bookForm {
+  text-align: center;
+  margin-top: 50px;
+  border-top: 2px solid rgba(44, 24, 16, 0.1);
+  padding-top: 30px;
+  color: #2c1810;
+}
+
+.bookForm img {
+  width: 40px;
+  height: 40px;
+}
+
+form input {
+  margin-right: 30px;
+  border: none;
+  background-color: #ededed;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+#title {
+  width: 42%;
+}
+
+#author {
+  width: 30%;
+}
+
+form button {
+  padding: 8px 20px;
+  background-color: #daaa63;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 15px;
+  border: none;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background-color: #2c1810;
+}

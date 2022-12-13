@@ -23,6 +23,7 @@ code {
 .app-cont {
   padding: 60px 50px;
   background-color: #f3e5d0;
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../public/wood.jpg'); */
 }
 
 .app {

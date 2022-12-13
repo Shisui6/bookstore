@@ -16,7 +16,7 @@ nav ul {
   padding: 0;
   list-style: none;
   position: relative;
-  right: 55px;
+  right: 70px;
 }
 
 nav h1 {
@@ -32,6 +32,7 @@ nav li:last-child {
 .link {
   text-decoration: none;
   color: #2c1810;
+  transition: 0.3s;
 }
 
 .active {
@@ -40,6 +41,7 @@ nav li:last-child {
   background-color: #daaa63;
   padding: 8px 25px;
   border-radius: 25px;
+  transition: 0.3s;
 }
 
 .link-img {

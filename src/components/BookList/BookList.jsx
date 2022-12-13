@@ -36,9 +36,9 @@ const BookList = () => {
     <>
       <div className="booklist">
         {books.map((book) => <Book key={book.id} book={book} />)}
-      </div>
 
-      <BookForm />
+        <BookForm />
+      </div>
     </>
   );
 };
