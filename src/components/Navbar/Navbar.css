@@ -51,3 +51,28 @@ nav li:last-child {
   width: 20px;
   margin-right: 10px;
 }
+
+@media only screen and (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    padding: 10px 10px;
+    height: 160px;
+  }
+
+  .profile {
+    display: none;
+  }
+
+  nav ul {
+    right: 0;
+  }
+
+  nav h1 {
+    text-align: center;
+    margin-right: 0;
+  }
+
+  nav li:last-child {
+    margin-left: 30px;
+  }
+}
