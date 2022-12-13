@@ -37,6 +37,10 @@ const BookForm = () => {
     };
 
     dispatch(addAction(payload));
+    setBook({
+      title: '',
+      author: '',
+    });
   };
 
   return (
