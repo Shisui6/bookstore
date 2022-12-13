@@ -24,7 +24,9 @@
 
 # 📖 Bookstore <a name="about-project"></a>
 
-**Bookstore** is a react application that displays a list of books and allows you to add and remove books from that list
+**Bookstore** is a react and redux application that displays a list of books and allows you to add and remove books from that list
+
+![image](https://user-images.githubusercontent.com/37116322/207313078-340b44a7-d198-4d2c-a76d-68a0595ebf15.png)
 
 ## 🛠 Built With <a name="built-with"></a>
 

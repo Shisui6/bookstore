@@ -56,6 +56,24 @@ code {
   font-weight: 400;
 }
 
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dcdcdc;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(145, 145, 145);
+}
+
 @media only screen and (max-width: 768px) {
   .app-cont {
     padding: 40px 20px;
