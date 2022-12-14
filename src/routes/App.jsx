@@ -1,16 +1,22 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
+import BookForm from '../components/BookForm/BookForm';
 
-const App = () => (
-  <div className="app-cont">
-    <div className="app">
-      <Navbar />
+const App = () => {
+  const location = useLocation();
 
-      <div id="detail">
-        <Outlet />
+  return (
+    <div className="app-cont">
+      <div className="app">
+        <Navbar />
+
+        <div id="detail">
+          <Outlet />
+        </div>
       </div>
+      {location.pathname === '/' ? <BookForm /> : ''}
     </div>
-  </div>
-);
+  );
+};
 
 export default App;

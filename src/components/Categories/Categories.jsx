@@ -1,17 +1,41 @@
-import { useDispatch, useSelector } from 'react-redux';
 import './Categories.css';
-import { statusAction, selectCategories } from '../../redux/categories/categories';
+import fictionImg from '../../images/fiction.jpg';
+import nonFictionImg from '../../images/non-fiction.jpg';
+import dramaImg from '../../images/drama.jpg';
+import poetryImg from '../../images/poetry.jpg';
+import folkImg from '../../images/folk.jpg';
+import fantasyImg from '../../images/fantasy.jpg';
 
-const Categories = () => {
-  const dispatch = useDispatch();
-  const cat = useSelector(selectCategories);
-
-  return (
-    <div className="categories">
-      {cat.length ? <p>{cat}</p> : ''}
-      <button type="button" onClick={() => dispatch(statusAction())}>Check status</button>
+const Categories = () => (
+  <div className="categories">
+    <h2>Explore</h2>
+    <div className="categories-grid">
+      <div>
+        <div className="cat-item"><div className="cat-img-cont"><img src={fictionImg} alt="fiction" /></div></div>
+        <p>Fiction</p>
+      </div>
+      <div>
+        <div className="cat-item"><div className="cat-img-cont"><img src={nonFictionImg} alt="non-fiction" /></div></div>
+        <p>Non-Fiction</p>
+      </div>
+      <div>
+        <div className="cat-item"><div className="cat-img-cont"><img src={dramaImg} alt="drama" /></div></div>
+        <p>Drama</p>
+      </div>
+      <div>
+        <div className="cat-item"><div className="cat-img-cont"><img src={poetryImg} alt="poetry" /></div></div>
+        <p>Poetry</p>
+      </div>
+      <div>
+        <div className="cat-item"><div className="cat-img-cont"><img src={folkImg} alt="folk" /></div></div>
+        <p>Folktale</p>
+      </div>
+      <div>
+        <div className="cat-item"><div className="cat-img-cont"><img src={fantasyImg} alt="fantasy" /></div></div>
+        <p>Fantasy</p>
+      </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default Categories;

@@ -24,9 +24,9 @@
 
 # 📖 Bookstore <a name="about-project"></a>
 
-**Bookstore** is a react and redux application that displays a list of books and allows you to add and remove books from that list
+**Bookstore** is a react and redux application that helps you stick to your daily reading goals. Add all the books your reading and keep track of your progress all the way to completion. You can also filter your books by different categories
 
-![image](https://user-images.githubusercontent.com/37116322/207313078-340b44a7-d198-4d2c-a76d-68a0595ebf15.png)
+![image](https://user-images.githubusercontent.com/37116322/207583257-a9e40355-0ba9-411b-838b-349ace3c206e.png)
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -45,8 +45,8 @@
 ### Key Features <a name="key-features"></a>
 
 - Displays a list of books
-- Allows users to add books
-- Allows users to remove books
+- Allows users to add and remove books from that list
+- Allows users to filter books bu categories
 - Responsive design which adapts to most screen sizes
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
