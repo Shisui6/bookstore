@@ -1,60 +1,97 @@
 // Imports
-import { v4 as uuidv4 } from 'uuid';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-// Action types
-const ADD = 'bookstore/books/ADD_BOOK';
-const REMOVE = 'bookstore/books/REMOVE_BOOK';
+// Base URL
+const URL = `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${process.env.REACT_APP_API_KEY}/books`;
 
-// Initial state
-const initialState = [
-  {
-    id: uuidv4(),
-    percent: 64,
-    category: 'Action',
-    title: 'The Hunger Games',
-    author: 'Suzanne Collins',
-    chapter: 'Chapter 17',
+// Thunk for fetching books from API
+export const fetchBooks = createAsyncThunk(
+  'books/getBooks',
+  async () => {
+    const response = await fetch(URL);
+    const json = await response.json();
+    let jsonArr = Object.keys(json).map((item) => {
+      json[item][0].item_id = item;
+      return json[item][0];
+    });
+    jsonArr = jsonArr.sort((a, b) => {
+      const fa = a.title.toLowerCase();
+      const fb = b.title.toLowerCase();
+
+      if (fa < fb) {
+        return -1;
+      }
+      if (fa > fb) {
+        return 1;
+      }
+      return 0;
+    });
+    return jsonArr;
   },
-  {
-    id: uuidv4(),
-    percent: 30,
-    category: 'Science Fiction',
-    title: 'Dune',
-    author: 'Frank Herbert',
-    chapter: 'Chapter 3: "A Lesson Learned"',
-  },
-  {
-    id: uuidv4(),
-    percent: 10,
-    category: 'Economy',
-    title: 'Capital in the Twenty-First Century',
-    author: 'Suzanne Collins',
-    chapter: 'Introduction',
-  },
-];
+);
 
-// Reducer
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case ADD:
-      return [...state, action.payload];
-    case REMOVE:
-      return state.filter((book) => book.id !== action.payload);
-    default:
-      return state;
-  }
-};
+// Thunk for posting books to API
+export const postBook = createAsyncThunk(
+  'books/addBook',
+  async (data) => {
+    await axios.post(URL, data);
+  },
+);
 
-// Action Creators
-export const addAction = (payload) => ({
-  type: ADD,
-  payload,
+// Thunk for deleting a book from API
+export const deleteBook = createAsyncThunk(
+  'books/deleteBook',
+  async (data) => {
+    await axios.delete(`${URL}/${data.item_id}`);
+  },
+);
+
+// Books slice
+export const booksSlice = createSlice({
+  name: 'books',
+  initialState: {
+    books: [],
+    isLoading: false,
+    hasError: false,
+  },
+  reducers: {
+    addBook(state, action) {
+      state.books.push(action.payload);
+    },
+    removeBook(state, action) {
+      const state1 = state;
+      state1.books = state.books.filter((book) => book.item_id !== action.payload.item_id);
+    },
+  },
+  extraReducers: {
+    [fetchBooks.pending]: (state) => {
+      const state1 = state;
+      state1.isLoading = true;
+      state1.hasError = false;
+    },
+    [fetchBooks.fulfilled]: (state, action) => {
+      const state1 = state;
+      state1.books = action.payload;
+      state1.isLoading = false;
+      state1.hasError = false;
+    },
+    [fetchBooks.rejected]: (state) => {
+      const state1 = state;
+      state1.isLoading = false;
+      state1.hasError = true;
+    },
+  },
 });
 
-export const removeAction = (payload) => ({
-  type: REMOVE,
-  payload,
-});
+export const {
+  addBook,
+  removeBook,
+} = booksSlice.actions;
 
 // Selectors
-export const selectBooks = (state) => state.books;
+export const selectBooks = (state) => state.books.books;
+export const selectIsLoading = (state) => state.books.isLoading;
+export const selectHasError = (state) => state.books.hasError;
+
+export default booksSlice.reducer;

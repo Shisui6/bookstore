@@ -2,21 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Book.css';
 import { useDispatch } from 'react-redux';
-import { removeAction } from '../../redux/books/books';
+import { deleteBook, removeBook } from '../../redux/books/books';
 
 const Book = ({ book }) => {
   const dispatch = useDispatch();
+
+  const handleClick = () => {
+    const payload = {
+      item_id: book.item_id,
+    };
+
+    dispatch(deleteBook(payload));
+    dispatch(removeBook(payload));
+  };
 
   return (
     <div className="book">
       <div className="book-info">
         <div>
-          <p className="cat">{book.category}</p>
+          <p className="cat">{book.category.category}</p>
           <h2>{book.title}</h2>
           <p className="author">{book.author}</p>
           <ul>
             <li><button type="button">Comments</button></li>
-            <li><button type="button" onClick={() => dispatch(removeAction(book.id))}>Remove</button></li>
+            <li><button type="button" onClick={handleClick}>Remove</button></li>
             <li><button type="button">Edit</button></li>
           </ul>
         </div>
@@ -30,7 +39,7 @@ const Book = ({ book }) => {
             />
             <path
               className="circle"
-              strokeDasharray={`${book.percent}, 100`}
+              strokeDasharray={`${book.category.percent}, 100`}
               d="M18 2.0845
                 a 15.9155 15.9155 0 0 1 0 31.831
                 a 15.9155 15.9155 0 0 1 0 -31.831"
@@ -39,7 +48,7 @@ const Book = ({ book }) => {
           </svg>
           <div className="percent-div">
             <p className="percent">
-              {book.percent}
+              {book.category.percent}
               %
             </p>
             <p>Completed</p>
@@ -48,7 +57,7 @@ const Book = ({ book }) => {
       </div>
       <div className="chapter-div">
         <p className="current">CURRENT CHAPTER</p>
-        <p className="chapter">{book.chapter}</p>
+        <p className="chapter">{book.category.chapter}</p>
         <button type="button" className="update">Update Progress</button>
       </div>
     </div>
@@ -56,7 +65,7 @@ const Book = ({ book }) => {
 };
 
 Book.propTypes = {
-  book: PropTypes.shape.isRequired,
+  book: PropTypes.shape().isRequired,
 };
 
 export default Book;
