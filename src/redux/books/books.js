@@ -97,7 +97,7 @@ export const {
 
 // Selectors
 export const selectBooks = (state) => state.books.books;
-export const selectIsLoading = (state) => state.isLoading;
-export const selectHasError = (state) => state.hasError;
+export const selectIsLoading = (state) => state.books.isLoading;
+export const selectHasError = (state) => state.books.hasError;
 
 export default booksSlice.reducer;

@@ -119,6 +119,16 @@ You can deploy this project using:
   serve -s build
 ```
 
+### API Instructions
+
+Instructions to setup Bookstore API key are as follows:
+
+```sh
+- Create a new app by heading to `https://hoppscotch.io/` and making a POST request to `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/`
+- Add the returned API key to a `.env` file in your root directory using `REACT_APP_API_KEY=returnedApiKey`
+- Note: make sure to replace `returnedApiKey` with your API key
+```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
