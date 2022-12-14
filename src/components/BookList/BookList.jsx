@@ -1,14 +1,19 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
-import { selectBooks } from '../../redux/books/books';
+import { selectBooks, fetchBooks } from '../../redux/books/books';
 import Book from '../Book/Book';
 import './BookList.css';
 import bookImg from '../../images/book-empty.png';
 
 const BookList = () => {
+  const dispatch = useDispatch();
   const books = useSelector(selectBooks);
   const [animationParent] = useAutoAnimate();
+
+  useEffect(() => {
+    dispatch(fetchBooks());
+  }, [dispatch]);
 
   if (!books.length) {
     return (

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import './BookForm.css';
 import bookImg from '../../images/book-form.png';
-import { addAction } from '../../redux/books/books';
+import { addBook, postBook } from '../../redux/books/books';
 
 const BookForm = () => {
   const [book, setBook] = useState({
@@ -30,13 +30,12 @@ const BookForm = () => {
     e.preventDefault();
     const payload = {
       ...book,
-      id: uuidv4(),
-      percent: 0,
-      category: 'Fiction',
-      chapter: 'Chapter 1',
+      item_id: uuidv4(),
+      category: { percent: 0, chapter: 'Chapter 1', category: 'Fiction' },
     };
 
-    dispatch(addAction(payload));
+    dispatch(postBook(payload));
+    dispatch(addBook(payload));
     setBook({
       title: '',
       author: '',
