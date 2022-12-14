@@ -65,7 +65,7 @@ const Book = ({ book }) => {
 };
 
 Book.propTypes = {
-  book: PropTypes.shape.isRequired,
+  book: PropTypes.shape().isRequired,
 };
 
 export default Book;

@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 // Imports
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
@@ -35,11 +34,10 @@ export const fetchBooks = createAsyncThunk(
 export const postBook = createAsyncThunk(
   'books/addBook',
   async (data) => {
-    const data1 = JSON.stringify(data);
     await fetch(URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: data1,
+      body: data,
     });
   },
 );
@@ -70,22 +68,26 @@ export const booksSlice = createSlice({
       state.books.push(action.payload);
     },
     removeBook(state, action) {
-      state.books = state.books.filter((book) => book.id !== action.payload.item_id);
+      const state1 = state;
+      state1.books = state.books.filter((book) => book.id !== action.payload.item_id);
     },
   },
   extraReducers: {
     [fetchBooks.pending]: (state) => {
-      state.isLoading = true;
-      state.hasError = false;
+      const state1 = state;
+      state1.isLoading = true;
+      state1.hasError = false;
     },
     [fetchBooks.fulfilled]: (state, action) => {
-      state.books = action.payload;
-      state.isLoading = false;
-      state.hasError = false;
+      const state1 = state;
+      state1.books = action.payload;
+      state1.isLoading = false;
+      state1.hasError = false;
     },
     [fetchBooks.rejected]: (state) => {
-      state.isLoading = false;
-      state.hasError = true;
+      const state1 = state;
+      state1.isLoading = false;
+      state1.hasError = true;
     },
   },
 });

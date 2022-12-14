@@ -28,14 +28,20 @@ const BookForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const payload = {
+    const payload = JSON.stringify({
       ...book,
       item_id: uuidv4(),
+      category: { percent: 0, chapter: 'Chapter 1', category: 'Fiction' },
+    });
+
+    const payload1 = {
+      ...book,
+      id: uuidv4(),
       category: { percent: 0, chapter: 'Chapter 1', category: 'Fiction' },
     };
 
     dispatch(postBook(payload));
-    dispatch(addBook(payload));
+    dispatch(addBook(payload1));
     setBook({
       title: '',
       author: '',
