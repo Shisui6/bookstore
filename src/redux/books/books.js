@@ -1,5 +1,6 @@
 // Imports
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 // Base URL
 const URL = `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${process.env.REACT_APP_API_KEY}/books`;
@@ -11,7 +12,7 @@ export const fetchBooks = createAsyncThunk(
     const response = await fetch(URL);
     const json = await response.json();
     let jsonArr = Object.keys(json).map((item) => {
-      json[item][0].id = item;
+      json[item][0].item_id = item;
       return json[item][0];
     });
     jsonArr = jsonArr.sort((a, b) => {
@@ -34,11 +35,7 @@ export const fetchBooks = createAsyncThunk(
 export const postBook = createAsyncThunk(
   'books/addBook',
   async (data) => {
-    await fetch(URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: data,
-    });
+    await axios.post(URL, data);
   },
 );
 
@@ -46,12 +43,7 @@ export const postBook = createAsyncThunk(
 export const deleteBook = createAsyncThunk(
   'books/deleteBook',
   async (data) => {
-    const data1 = JSON.stringify(data);
-    await fetch(`${URL}/${data.item_id}`, {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-      body: data1,
-    });
+    await axios.delete(`${URL}/${data.item_id}`);
   },
 );
 
@@ -69,7 +61,7 @@ export const booksSlice = createSlice({
     },
     removeBook(state, action) {
       const state1 = state;
-      state1.books = state.books.filter((book) => book.id !== action.payload.item_id);
+      state1.books = state.books.filter((book) => book.item_id !== action.payload.item_id);
     },
   },
   extraReducers: {

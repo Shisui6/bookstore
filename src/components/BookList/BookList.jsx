@@ -31,7 +31,7 @@ const BookList = () => {
   return (
     <>
       <div className="booklist" ref={animationParent}>
-        {books.map((book) => <Book key={book.id} book={book} />)}
+        {books.map((book) => <Book key={book.item_id} book={book} />)}
       </div>
     </>
   );

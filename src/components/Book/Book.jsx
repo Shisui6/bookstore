@@ -9,7 +9,7 @@ const Book = ({ book }) => {
 
   const handleClick = () => {
     const payload = {
-      item_id: book.id,
+      item_id: book.item_id,
     };
 
     dispatch(deleteBook(payload));
