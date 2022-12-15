@@ -53,10 +53,15 @@ export const booksSlice = createSlice({
   name: 'books',
   initialState: {
     books: [],
+    selectedCategory: '',
     isLoading: false,
     hasError: false,
   },
   reducers: {
+    setSelectedCategory(state, action) {
+      const state1 = state;
+      state1.selectedCategory = action.payload;
+    },
     addBook(state, action) {
       state.books.push(action.payload);
     },
@@ -98,14 +103,25 @@ export const booksSlice = createSlice({
 });
 
 export const {
+  setSelectedCategory,
   addBook,
   removeBook,
   updateProgress,
 } = booksSlice.actions;
 
 // Selectors
+export const selectSelectedCategory = (state) => state.books.selectedCategory;
 export const selectBooks = (state) => state.books.books;
 export const selectIsLoading = (state) => state.books.isLoading;
 export const selectHasError = (state) => state.books.hasError;
+export const selectFilteredBooks = (state) => {
+  const books = selectBooks(state);
+  const category = selectSelectedCategory(state);
+  if (category) {
+    return books.filter((book) => book.category.category.includes(category));
+  }
+
+  return books;
+};
 
 export default booksSlice.reducer;

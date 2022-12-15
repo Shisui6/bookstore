@@ -27,7 +27,7 @@ const Book = ({ book }) => {
 
     const payload1 = {
       ...book,
-      category: { percent: percent += 10, chapter: chapter += 1, category: 'Fiction' },
+      category: { percent: percent += 10, chapter: chapter += 1, category: book.category.category },
     };
 
     if (percent !== 110) {

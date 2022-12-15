@@ -29,7 +29,8 @@
 
 .cat-img-cont {
   height: 150px;
-  width: 70%;
+  width: 80%;
+  margin: 0 auto;
   max-width: 200px;
   border-radius: 15px;
   cursor: pointer;

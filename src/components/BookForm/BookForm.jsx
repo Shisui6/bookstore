@@ -9,6 +9,7 @@ const BookForm = () => {
   const [book, setBook] = useState({
     title: '',
     author: '',
+    category: 'Fiction',
   });
   const dispatch = useDispatch();
 
@@ -18,10 +19,15 @@ const BookForm = () => {
         ...book,
         title: e.target.value,
       }));
-    } else {
+    } else if (e.target.name === 'author') {
       setBook((book) => ({
         ...book,
         author: e.target.value,
+      }));
+    } else {
+      setBook((book) => ({
+        ...book,
+        category: e.target.value,
       }));
     }
   };
@@ -31,7 +37,7 @@ const BookForm = () => {
     const payload = {
       ...book,
       item_id: uuidv4(),
-      category: { percent: 10, chapter: 1, category: 'Fiction' },
+      category: { percent: 10, chapter: 1, category: book.category },
     };
 
     dispatch(postBook(payload));
@@ -39,6 +45,7 @@ const BookForm = () => {
     setBook({
       title: '',
       author: '',
+      category: book.category,
     });
   };
 
@@ -49,6 +56,14 @@ const BookForm = () => {
       <form onSubmit={handleSubmit}>
         <input type="text" id="title" name="title" placeholder="Title" value={book.title} onChange={handleInputChange} required />
         <input type="text" id="author" name="author" placeholder="Author" value={book.author} onChange={handleInputChange} required />
+        <select name="category" id="category" value={book.category} onChange={handleInputChange}>
+          <option value="Fiction">Fiction</option>
+          <option value="Non-Fiction">Non-Fiction</option>
+          <option value="Drama">Drama</option>
+          <option value="Poetry">Poetry</option>
+          <option value="Folktale">Folktale</option>
+          <option value="Fantasy">Fantasy</option>
+        </select>
         <button type="submit">Add Book</button>
       </form>
     </div>
