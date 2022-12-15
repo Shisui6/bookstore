@@ -7,7 +7,7 @@ body {
   margin: 0;
   padding: 0;
   min-width: 400px;
-  background-color: #f3f4f8;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../public/wood.jpg');
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -23,12 +23,12 @@ code {
 }
 
 .app-cont {
-  padding: 50px 50px;
+  padding: 60px 50px;
 }
 
 .app {
-  border-radius: 5px;
-  background-color: #fafafa;
+  border-radius: 45px;
+  background-color: #f8f3ed;
 }
 
 #error-page {

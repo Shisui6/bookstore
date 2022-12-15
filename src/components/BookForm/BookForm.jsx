@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import './BookForm.css';
+import bookImg from '../../images/book-form.png';
 import { addBook, postBook } from '../../redux/books/books';
 
 const BookForm = () => {
@@ -50,7 +51,8 @@ const BookForm = () => {
 
   return (
     <div className="bookForm">
-      <h2>ADD NEW BOOK</h2>
+      <img src={bookImg} alt="book" />
+      <h2>New Book</h2>
       <form onSubmit={handleSubmit}>
         <input type="text" id="title" name="title" placeholder="Title" value={book.title} onChange={handleInputChange} required />
         <input type="text" id="author" name="author" placeholder="Author" value={book.author} onChange={handleInputChange} required />

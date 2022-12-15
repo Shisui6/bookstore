@@ -18,7 +18,7 @@
 }
 
 .cat-item {
-  background-color: #fff;
+  background-color: rgba(218, 170, 99, 0.1);
   border-radius: 35px;
   backdrop-filter: blur(20px);
   display: flex;
@@ -52,7 +52,7 @@
 }
 
 .categories h2 {
-  color: #4386bf;
+  color: #daaa63;
   font-weight: 400;
 }
 

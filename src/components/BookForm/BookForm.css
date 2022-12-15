@@ -1,9 +1,14 @@
 .bookForm {
-  padding: 25px 0 100px;
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 25px;
+  padding-bottom: 35px;
   color: #2c1810;
-  border-top: 2px solid #e8e8e8;
-  width: 90%;
-  margin: 0 auto;
+  background-color: #f8f3ed;
+  border-radius: 45px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .bookForm img {
@@ -15,21 +20,19 @@
 .bookForm h2 {
   margin-top: 0;
   margin-bottom: 0;
-  color: #888;
-  font-size: 20px;
 }
 
 form {
-  padding: 15px 0 0;
+  padding: 15px 20px 0;
 }
 
 form input,
 select {
   margin-right: 30px;
   border: none;
-  background-color: #fff;
-  padding: 13px;
-  border-radius: 5px;
+  background-color: #ededed;
+  padding: 10px;
+  border-radius: 15px;
 }
 
 #title {
@@ -41,11 +44,11 @@ select {
 }
 
 form button {
-  padding: 13px 30px;
-  background-color: #0290ff;
+  padding: 8px 20px;
+  background-color: #daaa63;
   color: #fff;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 15px;
   border: none;
   transition: 0.3s;
 }
@@ -68,5 +71,13 @@ form button:hover {
   #author {
     width: 100%;
     margin-bottom: 25px;
+  }
+
+  form button {
+    margin-top: 25px;
+  }
+
+  select {
+    margin: 0 auto;
   }
 }

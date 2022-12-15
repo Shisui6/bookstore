@@ -26,7 +26,7 @@
 
 **Bookstore** is a react and redux application that helps you stick to your daily reading goals. Add all the books you are reading and keep track of your progress to completion. You can also filter your books by different categories
 
-![image](https://user-images.githubusercontent.com/37116322/207583257-a9e40355-0ba9-411b-838b-349ace3c206e.png)
+![image](https://user-images.githubusercontent.com/37116322/207895813-8e5bf4b6-f8eb-48d1-bca2-e24aefe2e88a.png)
 
 ## 🛠 Built With <a name="built-with"></a>
 
