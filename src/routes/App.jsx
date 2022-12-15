@@ -13,8 +13,8 @@ const App = () => {
         <div id="detail">
           <Outlet />
         </div>
+        {location.pathname === '/' ? <BookForm /> : ''}
       </div>
-      {location.pathname === '/' ? <BookForm /> : ''}
     </div>
   );
 };
