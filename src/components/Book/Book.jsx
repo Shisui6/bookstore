@@ -2,18 +2,40 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Book.css';
 import { useDispatch } from 'react-redux';
-import { deleteBook, removeBook } from '../../redux/books/books';
+import {
+  deleteBook, removeBook, updateProgress, postBook,
+} from '../../redux/books/books';
 
 const Book = ({ book }) => {
   const dispatch = useDispatch();
 
-  const handleClick = () => {
+  const handleRemoveClick = () => {
     const payload = {
       item_id: book.item_id,
     };
 
     dispatch(deleteBook(payload));
     dispatch(removeBook(payload));
+  };
+
+  const handleUpdateClick = () => {
+    let { percent } = book.category;
+    let { chapter } = book.category;
+    const payload = {
+      item_id: book.item_id,
+    };
+
+    const payload1 = {
+      ...book,
+      category: { percent: percent += 10, chapter: chapter += 1, category: 'Fiction' },
+    };
+
+    if (percent !== 110) {
+      dispatch(updateProgress(payload));
+      dispatch(deleteBook(payload)).then(() => {
+        dispatch(postBook(payload1));
+      });
+    }
   };
 
   return (
@@ -25,7 +47,7 @@ const Book = ({ book }) => {
           <p className="author">{book.author}</p>
           <ul>
             <li><button type="button">Comments</button></li>
-            <li><button type="button" onClick={handleClick}>Remove</button></li>
+            <li><button type="button" onClick={handleRemoveClick}>Remove</button></li>
             <li><button type="button">Edit</button></li>
           </ul>
         </div>
@@ -57,8 +79,12 @@ const Book = ({ book }) => {
       </div>
       <div className="chapter-div">
         <p className="current">CURRENT CHAPTER</p>
-        <p className="chapter">{book.category.chapter}</p>
-        <button type="button" className="update">Update Progress</button>
+        <p className="chapter">
+          Chapter
+          &nbsp;
+          {book.category.chapter}
+        </p>
+        <button type="button" className="update" onClick={handleUpdateClick}>Update Progress</button>
       </div>
     </div>
   );

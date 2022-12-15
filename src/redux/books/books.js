@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 // Imports
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
@@ -63,6 +64,18 @@ export const booksSlice = createSlice({
       const state1 = state;
       state1.books = state.books.filter((book) => book.item_id !== action.payload.item_id);
     },
+    updateProgress(state, action) {
+      const state1 = state;
+      state1.books = state.books.map((book) => {
+        if (book.item_id === action.payload.item_id) {
+          if (book.category.percent !== 100) {
+            book.category.percent += 10;
+            book.category.chapter += 1;
+          }
+        }
+        return book;
+      });
+    },
   },
   extraReducers: {
     [fetchBooks.pending]: (state) => {
@@ -87,6 +100,7 @@ export const booksSlice = createSlice({
 export const {
   addBook,
   removeBook,
+  updateProgress,
 } = booksSlice.actions;
 
 // Selectors

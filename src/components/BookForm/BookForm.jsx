@@ -31,7 +31,7 @@ const BookForm = () => {
     const payload = {
       ...book,
       item_id: uuidv4(),
-      category: { percent: 10, chapter: 'Chapter 1', category: 'Fiction' },
+      category: { percent: 10, chapter: 1, category: 'Fiction' },
     };
 
     dispatch(postBook(payload));
