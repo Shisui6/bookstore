@@ -44,9 +44,10 @@
 
 ### Key Features <a name="key-features"></a>
 
-- Displays a list of books
+- Displays a list of books from the [bookstore](https://www.notion.so/Bookstore-API-51ea269061f849118c65c0a53e88a739) API
 - Allows users to add and remove books from that list
-- Allows users to filter books bu categories
+- Allows users to update each book chapter
+- Allows users to filter books by category
 - Responsive design which adapts to most screen sizes
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

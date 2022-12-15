@@ -1,15 +1,26 @@
 .booklist {
-  padding: 10px 40px 50px;
+  padding: 50px;
 }
 
 .booklist-empty {
   text-align: center;
-  color: #daaa63;
+  color: #4386bf;
   padding: 10px;
 }
 
 .booklist-empty h2 {
   font-weight: 400;
+}
+
+.filter {
+  position: absolute;
+  right: 55px;
+  top: 10px;
+  font-size: 12px;
+}
+
+.filter img {
+  height: 20px;
 }
 
 @media only screen and (max-width: 768px) {

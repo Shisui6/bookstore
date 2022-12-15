@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 // Imports
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
@@ -52,16 +53,33 @@ export const booksSlice = createSlice({
   name: 'books',
   initialState: {
     books: [],
+    selectedCategory: '',
     isLoading: false,
     hasError: false,
   },
   reducers: {
+    setSelectedCategory(state, action) {
+      const state1 = state;
+      state1.selectedCategory = action.payload;
+    },
     addBook(state, action) {
       state.books.push(action.payload);
     },
     removeBook(state, action) {
       const state1 = state;
       state1.books = state.books.filter((book) => book.item_id !== action.payload.item_id);
+    },
+    updateProgress(state, action) {
+      const state1 = state;
+      state1.books = state.books.map((book) => {
+        if (book.item_id === action.payload.item_id) {
+          if (book.category.percent !== 100) {
+            book.category.percent += 10;
+            book.category.chapter += 1;
+          }
+        }
+        return book;
+      });
     },
   },
   extraReducers: {
@@ -85,13 +103,25 @@ export const booksSlice = createSlice({
 });
 
 export const {
+  setSelectedCategory,
   addBook,
   removeBook,
+  updateProgress,
 } = booksSlice.actions;
 
 // Selectors
+export const selectSelectedCategory = (state) => state.books.selectedCategory;
 export const selectBooks = (state) => state.books.books;
 export const selectIsLoading = (state) => state.books.isLoading;
 export const selectHasError = (state) => state.books.hasError;
+export const selectFilteredBooks = (state) => {
+  const books = selectBooks(state);
+  const category = selectSelectedCategory(state);
+  if (category) {
+    return books.filter((book) => book.category.category.includes(category));
+  }
+
+  return books;
+};
 
 export default booksSlice.reducer;

@@ -1,47 +1,50 @@
 nav {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 24px 50px;
   height: 95px;
+  background-color: #fff;
+  border-bottom: 1px solid #e8e8e8;
 }
 
 .profile {
-  height: 35px;
-  width: 35px;
+  position: absolute;
+  right: 100px;
+  height: 45px;
+  width: 45px;
 }
 
 nav ul {
   display: flex;
   padding: 0;
   list-style: none;
-  position: relative;
-  right: 70px;
 }
 
 nav h1 {
   font-size: 30px;
-  color: #2c1810;
   margin-right: 40px;
+  color: #0290ff;
 }
 
 nav li:last-child {
-  margin-left: 50px;
+  margin-left: 40px;
 }
 
 .link {
+  font-size: 13px;
   text-decoration: none;
-  color: #2c1810;
+  color: #b4b4b4;
   transition: 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .active {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   text-decoration: none;
-  color: #2c1810;
-  background-color: #daaa63;
-  padding: 8px 25px;
-  border-radius: 25px;
-  transition: 0.3s;
+  color: #000;
 }
 
 .link-img {
